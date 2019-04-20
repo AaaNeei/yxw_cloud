@@ -61,7 +61,7 @@
         delete from yxw_student
         where stu_id = #{stuId,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.yxw.entity.Student">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="stuId" parameterType="com.yxw.entity.Student">
         insert into yxw_student (
         <include refid="Student_Column_List"/>
         )

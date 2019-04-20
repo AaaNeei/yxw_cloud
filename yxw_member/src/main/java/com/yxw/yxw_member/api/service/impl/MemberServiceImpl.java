@@ -112,23 +112,29 @@ public class MemberServiceImpl extends ResponseResultBase implements MemberServi
 
 
     @Override
-    public ResponseResult qqLogin(@RequestBody Student student) {
+    public ResponseResult qqLogin(@RequestBody Student student, @RequestParam("status") String status) {
         String openId = student.getOpenId();
         if (StringUtils.isEmpty(openId)) {
             return setErrorResult("openId不能为空");
         }
-        ResponseResult responseResult = loginReturnStudent(student);
-        //服务内可以直接强转为原对象
-        student = (Student) responseResult.getData();
-        //1,有网站账号的,直接绑定openId
-        student.setOpenId(openId);
-        student.setUpdateTime(new Date());
-        Integer integer = studentMapper.updateStudentBindingOpenId(student);
-        if (integer < 0) {
-            setErrorResult("QQ授权绑定失败");
+        Integer integer = 0;
+        //如果没注册用户
+        if (!StringUtils.pathEquals(status, ResultBase.YXW_QQ_LOGIN_STATUS)) {
+            integer = studentMapper.insert(student);
+        } else {
+            ResponseResult responseResult = loginReturnStudent(student);
+            if (!StringUtils.pathEquals(responseResult.getResultCode(), ResultBase.YXW_RESULT_SUCCESS_CODE)) {
+                return setErrorResult("QQ授权绑定失败");
+            }
+            student.setUpdateTime(new Date());
+            if (StringUtils.pathEquals(status, ResultBase.YXW_QQ_LOGIN_STATUS)) {
+                //1,有网站账号的,直接绑定openId修改到对应用户表
+                integer = studentMapper.updateStudentBindingOpenId(student);
+            }
         }
-        //2,没有网站账号的,注册账号并且绑定openId
-
+        if (integer < 0) {
+            return setErrorResult("QQ授权绑定失败");
+        }
         //绑定成功直接登录
         return loginReturnToken(student);
     }
