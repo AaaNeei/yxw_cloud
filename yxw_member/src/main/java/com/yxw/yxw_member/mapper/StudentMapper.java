@@ -17,15 +17,24 @@ import java.util.List;
 public interface StudentMapper {
     /**
      * 根据id查询对象
+     *
      * @param stuId
      * @return
      */
     Student findStudentById(Integer stuId);
 
+    Student findStudentByOpenId(String openId);
+
+
+    Integer updateStudentByStuId(Student student);
+
+    Integer updateStudentBindingOpenId(Student student);
+
     int deleteByPrimaryKey(Integer userId);
 
     /**
      * 注册
+     *
      * @param student
      * @return
      */
@@ -36,7 +45,6 @@ public interface StudentMapper {
 
     Student selectByStudentLogin(Student student);
 
-    int updateByPrimaryKeySelective(Integer stuId);
 
     //int updateByPrimaryKey(Integer stuId);
     //

@@ -28,6 +28,9 @@ public class RedisUtil {
         if (data instanceof String) {
             String value = (String) data;
             stringRedisTemplate.opsForValue().set(key, value);
+        } else {
+            String value = data.toString();
+            stringRedisTemplate.opsForValue().set(key, value);
         }
         if (timeout != null) {
             stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);

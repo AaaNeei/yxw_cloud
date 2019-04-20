@@ -18,20 +18,26 @@
         <result column="stu_num" property="stuNum" jdbcType="INTEGER"/>
         <result column="update_time" property="updateTime" jdbcType="DATE"/>
         <result column="stu_emil" property="stuEmil" jdbcType="VARCHAR"/>
+        <result column="openid" property="openId" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Student_Column_List">
        stu_id, stu_name, stu_sex, stu_age,stu_addr,stu_hobbies,create_time,
        stu_username,stu_password,comment,school_id,stu_credits,stu_mobile,
-       stu_num,update_time,stu_emil
+       stu_num,update_time,stu_emil,openid
     </sql>
-
 
 
     <select id="findStudentById" resultMap="StudentResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Student_Column_List"/>
         from yxw_student
-        where stu_id = #{stuId,jdbcType=INTEGER} limit 1
+        where stu_id = #{stuId} limit 1
+    </select>
+    <select id="findStudentByOpenId" resultMap="StudentResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+        where openid = #{openId} limit 1
     </select>
     <select id="ajaxCheckStuUsername" resultMap="StudentResultMap" parameterType="java.lang.String">
         select
@@ -64,7 +70,7 @@
         #{createTime},#{stuUsername,jdbcType=VARCHAR},#{stuPassword,jdbcType=VARCHAR},
         #{comment,jdbcType=VARCHAR},#{schoolId,jdbcType=INTEGER},#{stuCredits,jdbcType=INTEGER},
         #{stuMobile,jdbcType=VARCHAR},#{stuNum,jdbcType=INTEGER},#{updateTime,jdbcType=DATE},
-        #{stuEmil,jdbcType=VARCHAR}
+        #{stuEmil,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}
         )
     </insert>
     <insert id="insertSelective" parameterType="com.yxw.entity.Student">
@@ -162,7 +168,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.yxw.entity.Student">
+    <update id="updateStudentByStuId" parameterType="com.yxw.entity.Student">
         update yxw_student
         <set>
             <if test="stuId != null">
@@ -207,7 +213,20 @@
             <if test="stuEmil != null">
                 stu_emil = #{stuEmil,jdbcType=VARCHAR},
             </if>
-            update_time = new DATE
+            <if test="openId != null">
+                openid = #{openId,jdbcType=VARCHAR},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where stu_id = #{stuId,jdbcType=INTEGER}
+    </update>
+    <update id="updateStudentBindingOpenId" parameterType="com.yxw.entity.Student">
+        update yxw_student
+        <set>
+            <if test="openId != null">
+                openid = #{openId,jdbcType=VARCHAR},
+            </if>
+            update_time = #{updateTime}
         </set>
         where stu_id = #{stuId,jdbcType=INTEGER}
     </update>

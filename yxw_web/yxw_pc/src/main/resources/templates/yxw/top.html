@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/jquery-3.3.1.min.js}"/>
+</head>
+
+<body>
+<div th:fragment="top">
+    <!--=== Style Switcher ===-->
+    <i class="style-switcher-btn icon-cogs"></i>
+    <div class="style-switcher">
+        <div class="theme-close"><i class="icon-remove"></i></div>
+        <div class="theme-heading">Theme Colors</div>
+        <ul class="unstyled">
+            <li class="theme-default theme-active" data-style="default" data-header="light"></li>
+            <li class="theme-blue" data-style="blue" data-header="light"></li>
+            <li class="theme-orange" data-style="orange" data-header="light"></li>
+            <li class="theme-red" data-style="red" data-header="light"></li>
+            <li class="theme-light" data-style="light" data-header="light"></li>
+        </ul>
+    </div><!--/style-switcher-->
+    <!--=== End Style Switcher ===-->
+    <!--top-->
+    <!--=== Top ===-->
+    <div class="top">
+        <div class="container">
+            <ul class="loginbar pull-right">
+                <li><i class="icon-globe"></i><a>语言选择<i class="icon-sort-up"></i></a>
+                    <ul class="nav-list">
+                        <li class="active"><a href="#" onclick="translate()">English</a> <i class="icon-ok"></i></li>
+                        <li><a href="#">Spanish</a></li>
+                        <li><a href="#">Russian</a></li>
+                        <li><a href="#">German</a></li>
+                    </ul>
+                </li>
+                <li class="devider">&nbsp;</li>
+                <li><a href="page_faq.html" class="login-btn">帮助</a></li>
+                <li class="devider">&nbsp;</li>
+                <!--未登录状态-->
+                <li th:if="${stuUsername == null}"><a href="/member/login" class="login-btn">登录</a></li>
+                <li th:if="${stuUsername == null}" class="devider">&nbsp;</li>
+                <li th:if="${stuUsername == null}"><a href="/member/register" class="login-btn">注册</a></li>
+                <!--登录状态-->
+                <li th:if="${stuUsername != null}"><a href="#" class="login-btn">欢迎:<span
+                        th:text="${stuUsername}"></span></a></li>
+                <li th:if="${stuUsername != null}" class="devider">&nbsp;</li>
+                <li th:if="${stuUsername != null}"><a href="/member/loginOutPc" class="login-btn">退出</a></li>
+            </ul>
+        </div>
+    </div><!--/top-->
+    <!--=== End Top ===-->
+    <!--=== Header ===-->
+    <div class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html"><img id="logo-header" src="/assets/img/logo1-default.png" alt="Logo"/></a>
+            </div><!-- /logo -->
+
+            <!-- Menu -->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a><!-- /nav-collapse -->
+                    <div class="nav-collapse collapse">
+                        <ul class="nav top-2">
+                            <li class="active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">行万里路
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="active"><a href="/yxw/travel/travelGroup">旅行者们</a></li>
+                                    <li><a href="/yxw/travel/goTravel">去旅行</a></li>
+                                    <li><a href="/yxw/travel/travelPlan">我的计划</a></li>
+                                    <li><a href="/yxw/travel/backTravel">旅行回顾</a></li>
+                                    <li><a href="/yxw/error/404">拓展中...</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">读万卷书
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/yxw/feature_thumbnail">热门高校</a></li>
+                                    <li><a href="page_services.html">Services</a></li>
+                                    <li><a href="page_pricing.html">Pricing</a></li>
+                                    <li><a href="travel/travelPlan.html">Coming Soon</a></li>
+                                    <li><a href="page_faq.html">FAQs</a></li>
+                                    <li><a href="page_search.html">Search Result</a></li>
+                                    <li><a href="page_gallery.html">Gallery</a></li>
+                                    <li><a href="register.html">Registration</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="error/404.html">404</a></li>
+                                    <li><a href="travel/travelGroup.html">Clients</a></li>
+                                    <li><a href="page_privacy.html">Privacy Policy</a></li>
+                                    <li><a href="page_terms.html">Terms of Service</a></li>
+                                    <li><a href="page_column_left.html">2 Columns (Left)</a></li>
+                                    <li><a href="page_column_right.html">2 Columns (Right)</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li>
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">做一点事
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="feature_grid.html">Grid Layout</a></li>
+                                    <li><a href="feature_typography.html">Typography</a></li>
+                                    <li><a href="feature_thumbnail.html">Thumbnails</a></li>
+                                    <li><a href="feature_component.html">Components</a></li>
+                                    <li><a href="feature_navigation.html">Navigation</a></li>
+                                    <li><a href="feature_table.html">Tables</a></li>
+                                    <li><a href="feature_form.html">Forms</a></li>
+                                    <li><a href="feature_icons.html">Icons</a></li>
+                                    <li><a href="feature_button.html">Buttons</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">行一份善
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="travelDetil.html">Portfolio Item</a></li>
+                                    <li><a href="portfolio_2columns.html">Portfolio 2 Columns</a></li>
+                                    <li><a href="portfolio_3columns.html">Portfolio 3 Columns</a></li>
+                                    <li><a href="portfolio_4columns.html">Portfolio 4 Columns</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">影音天地
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="blog_item.html">Blog Item</a></li>
+                                    <li><a href="blog_left_sidebar.html">Blog Left Sidebar</a></li>
+                                    <li><a href="travel/backTravel.html">Blog Item Left Sidebar</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">拓展中...
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="page_contact.html">Contact Default</a></li>
+                                    <li><a href="page_contact1.html">Contact Boxed Map</a></li>
+                                </ul>
+                                <b class="caret-out"></b>
+                            </li>
+                            <li><a class="search"><i class="icon-search search-btn"></i></a></li>
+                        </ul>
+                        <div class="search-open">
+                            <div class="input-append">
+                                <form/>
+                                <input type="text" class="span3" placeholder="Search"/>
+                                <button type="submit" class="btn-u">Go</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /nav-collapse -->
+                </div><!-- /navbar-inner -->
+            </div><!-- /navbar -->
+        </div><!-- /container -->
+    </div><!--/header -->
+    <!--=== End Header ===-->
+
+
+</div>
+</body>
+
+</html>

@@ -1,5 +1,9 @@
 package com.yxw.base;
 
+import com.yxw.util.RedisUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * @Author:阿倪
  * @Date: 2019/4/18 16:40
@@ -7,8 +11,11 @@ package com.yxw.base;
  * @return:
  * @throws:
  */
+@Component
 public class ResponseResultBase {
 
+    @Autowired
+    protected RedisUtil redisUtil;
 
     public ResponseResult setErrorResult() {
         return setResult(ResultBase.YXW_RESULT_ERROR_CODE, ResultBase.YXW_RESULT_ERROR_MSG, null);
@@ -16,6 +23,10 @@ public class ResponseResultBase {
 
     public ResponseResult setErrorResult(String msg) {
         return setResult(ResultBase.YXW_RESULT_ERROR_CODE, msg, null);
+    }
+
+    public ResponseResult setErrorResult(String code, String msg) {
+        return setResult(code, msg, null);
     }
 
     /**

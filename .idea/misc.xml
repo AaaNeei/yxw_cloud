@@ -8,6 +8,10 @@
         <option value="$PROJECT_DIR$/yxw_eureka/pom.xml" />
         <option value="$PROJECT_DIR$/yxw_member/pom.xml" />
         <option value="$PROJECT_DIR$/yxw_message/pom.xml" />
+        <option value="$PROJECT_DIR$/yxw_web/pom.xml" />
+        <option value="$PROJECT_DIR$/yxw_web/yxw_pc/pom.xml" />
+        <option value="$PROJECT_DIR$/yxw_web/yxw_h5/pom.xml" />
+        <option value="$PROJECT_DIR$/yxw_web/yxw_wachat/pom.xml" />
       </list>
     </option>
   </component>

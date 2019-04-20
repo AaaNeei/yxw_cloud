@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Sdk4J">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/yxw_web/lib/Sdk4J.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

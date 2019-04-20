@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+<head>
+    <title>Unify | Welcome...</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <link rel="stylesheet" href="/assets/css/headers/header1.css"/>
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="/assets/css/style_responsive.css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css"/>
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/assets/css/themes/default.css" id="style_color"/>
+    <!--<link rel="stylesheet" href="/assets/css/themes/headers/default.css" id="style_color-header-1" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--top 引入-->
+<div th:include="top::top"></div>
+
+<!--=== Content Part ===-->
+<div class="body">
+    <div class="breadcrumbs margin-bottom-50">
+        <div class="container">
+            <h1 class="color-green pull-left">注册</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/yxw/index">Home</a> <span class="divider">/</span></li>
+                <li><a href="">Pages</a> <span class="divider">/</span></li>
+                <li class="active">Registration</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+
+    <div class="container">
+        <div class="row-fluid margin-bottom-10">
+            <form class="reg-page" action="/yxw/registerIn" method="post"/>
+            <h4>注册新用户</h4>
+            <div class="controls">
+                <label>用户名<span class="color-red">*</span></label>
+                <input type="text" class="span8" id="stuUsername" name="stuUsername" onblur="ajaxCheckStuUsername()"/>
+                <span class="color-red" id="stuUsername_msg"></span>
+            </div>
+            <div class="controls">
+                <label>密 码<span class="color-red">*</span></label>
+                <input type="password" class="span8" name="password" id="password" onblur="checkStuPassword()"/>
+                <span class="color-red" id="password_msg"></span>
+                <input type="hidden" th:value="${publicKey}" name="publicKey" id="publicKey"/>
+            </div>
+            <div class="controls">
+                <label>确认密码<span class="color-red">*</span></label>
+                <input type="password" class="span8" id="rePassword" name="rePassword" onblur="checkRePassword()"/>
+                <span class="color-red" id="rePassword_msg"></span>
+                <input class="input-xlarge" type="hidden" id="stuPassword" name="stuPassword"/>
+            </div>
+            <div class="controls">
+                <label>手机号<span class="color-red">*</span></label>
+                <input type="text" class="span8" id="stuMobile" name="stuMobile" onblur="ajaxCheckStuMobile()"/>
+                <span class="color-red" id="stuMobile_msg"></span>
+            </div>
+            <div class="controls">
+                <label>手机验证码<span class="color-red">*</span></label>
+                <input type="text" class="span8" id="stuMobileCode" name="stuMobileCode"/>
+                <input class="btn-u pull-right" type="button" id="stuMobileBtn" value="获取验证码">
+            </div>
+            <div class="controls">
+
+                <label>图形验证码<span class="color-red">*</span></label>
+                <div>
+                    <input type="text" class="span6" id="kaptcha" name="kaptcha"
+                           placeholder="请输入验证码" style="color: #000000;"/>
+                    <img style="cursor: pointer;height: 30px;width: 100px" src="/kaptcha.jpg" id="kaptchaImage"
+                         title="点击换一张"/>
+                    <a class="color-green" id="kaptchaImage2">
+                        点击换张
+                    </a>
+                </div>
+
+            </div>
+            <!--<div class="controls form-inline">-->
+            <div class="controls">
+                <label class="checkbox">
+                    <input type="checkbox" id="checkAgreed" value=""/>&nbsp;
+                    我同意 <a href="" class="color-green">注册条款和条件</a>
+                </label>
+                <button class="btn-u pull-right" type="submit" id="user_insert_btn_reg" onclick="passwordEncryptReg()">注
+                    册
+                </button>
+            </div>
+            <hr/>
+            <p>已经注册? 点击 <a href="/yxw/login" class="color-green">登录</a> 您的账户.
+            </p>
+            </form>
+        </div><!--/row-fluid-->
+    </div><!--/container-->
+</div><!--/body-->
+<!--=== End Content Part ===-->
+
+
+<!--footer 引入-->
+<div th:include="footer::footer"></div>
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
+
+<!--前端加密-->
+<script type="text/javascript" src="/assets/js/yxw/jsencrypt.min.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/jsencrypt_yxw.js"></script>
+<!--验证码60s只能发一次-->
+<script type="text/javascript" src="/assets/js/yxw/kaptcha/jquery.cookie.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/kaptcha/kaptcha.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/kaptcha/register.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/kaptcha/validate.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/microsoft.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/language.js"></script>
+
+<script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="/assets/js/app.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+    });
+</script>
+<!--[if lt IE 9]>
+<script src="/assets/js/respond.js"></script>
+<![endif]-->
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+</html> 

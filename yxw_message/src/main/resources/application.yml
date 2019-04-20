@@ -7,16 +7,16 @@ eureka:
       defaultZone: http://192.168.110.170:8888/eureka/
 spring:
   application:
-    name: yxw_message
+    name: yxw-message
   activemq:
-    broker-url: tcp://localhost:8161
+    broker-url: tcp://localhost:61616
     in-memory: true
     pool:
       enabled: false
   mail:
     host: smtp.163.com
     username: AaaNeei@163.com
-    password: AaaNeei
+    password: yxw888message
     enable:  true
     smtp:
       auth: true
@@ -26,6 +26,5 @@ spring:
 ########################################
 MESSAGES_QUEUE: messages_email
 msg:
-  subject: ÂìÒÏ¿ÎÌÃ|Ã¿ÌØ½ÌÓıÌáÊ¾Äú£¬»áÔ±×¢²á³É¹¦ÓÊ¼ş¡£
-  text:  ¹§Ï²ÄúµÄÕË»§{},×¢²á³É¹¦!ÂìÒÏ¿ÎÌÃ|Ã¿ÌØ½ÌÓı ÉÏº£Ã¿ÌØ½ÌÓı¿Æ¼¼ÓĞÏŞ¹«Ë¾ www.itmayiedu.com
-
+  subject: æ¸¸å­¦ç½‘ç”¨æˆ·
+  text: æ­å–œæ‚¨çš„è´¦æˆ·{},æ³¨å†ŒæˆåŠŸ!è¯·ç™»å½•www.yxw.comå‚ä¸æ´»åŠ¨!

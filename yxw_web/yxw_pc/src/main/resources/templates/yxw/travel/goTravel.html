@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> <!--<![endif]-->
+<head>
+    <title>Unify | Welcome...</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <link rel="stylesheet" href="/assets/css/headers/header1.css"/>
+    <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="/assets/css/style_responsive.css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/assets/plugins/flexslider/flexslider.css" type="text/css" media="screen"/>
+    <!--图标Css-->
+    <link href="/assets/plugins/glyphicons/css/glyphicons.css" rel="stylesheet"/>
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="/assets/css/themes/default.css" id="style_color"/>
+    <link rel="stylesheet" href="/assets/css/themes/headers/default.css" id="style_color-header-1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+
+<!--top 引入-->
+<div th:include="top::top"></div>
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs margin-bottom-40">
+    <div class="container">
+        <h1 class="color-green pull-left">去旅行</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="/yxw/index">Home</a> <span class="divider">/</span></li>
+            <li><a href="blog.html">Blog</a> <span class="divider">/</span></li>
+            <li class="active">Travel</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container">
+    <form class="" action="/yxw/travel/goTravelUp" enctype="multipart/form-data" method="post"/>
+    <div class="row-fluid">
+        <div class="span3">
+            <!-- Contacts -->
+            <div class="headline"><h3>基本信息</h3></div>
+            <ul class="unstyled who margin-bottom-20">
+                <li><h4>旅行者:</h4>
+                    <input type="text" name="groupName" id="groupName" placeholder="团队名称"/>
+                </li>
+                <li style="height: 45px;">
+                    <h4 class="span5">预成员数:</h4>
+                    <span class="span7">
+                        <a class="glyphicons no-js circle_minus"
+                           style="border-right-width: 10px;padding-left: 0px;right: 10px"
+                           href="#"><i></i></a>
+                    <input type="text" value="1" id="memberNum" name="memberNum" style="width: 30px" placeholder="1"/>
+                    <a class="glyphicons no-js circle_plus" style="border-right-width: 10px;padding-left: 0px;"
+                       href="#"><i></i></a>
+                    </span>
+                </li>
+
+                <li><h4>旅行者宣言:</h4>
+                    <input type="text" value="" placeholder="宣言:"/>
+                </li>
+                <li><h4>旅行者诫言:</h4>
+                    <input type="text" value="" placeholder="诫言:"/>
+                </li>
+            </ul>
+
+            <!-- Business Hours -->
+            <div class="headline"><h3>Business Hours</h3></div>
+            <ul class="unstyled">
+                <li><strong>Monday-Friday:</strong> 10am to 8pm</li>
+                <li><strong>Saturday:</strong> 11am to 3pm</li>
+                <li><strong>Sunday:</strong> Closed</li>
+            </ul>
+
+            <!-- Why we are? -->
+            <div class="headline"><h3>Why we are?</h3></div>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+            <ul class="unstyled">
+                <li><i class="icon-ok color-green"></i> Odio dignissimos ducimus</li>
+                <li><i class="icon-ok color-green"></i> Blanditiis praesentium volup</li>
+                <li><i class="icon-ok color-green"></i> Eos et accusamus</li>
+            </ul>
+        </div><!--/span3-->
+        <div class="span9">
+            <!-- Service Blocks -->
+            <div class="row-fluid">
+                <div class="span4">
+                    <div class="service clearfix">
+                        <i class="icon-resize-small"></i>
+                        <h3>从哪到哪</h3>
+                        <label style="margin-top: 50px;">出发地:</label>
+                        <input type="text" name="groupStartLine" id="groupStartLine" class="border-radius-none"
+                               placeholder="合肥"/>
+                        <label>目的地:</label>
+                        <input type="text" name="groupEndLine" id="groupEndLine" class="border-radius-none"
+                               placeholder="南京"/>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service clearfix">
+                        <i class="icon-cogs"></i>
+                        <h3>时间规划</h3>
+                        <label style="margin-top: 50px;">出发日期:</label>
+                        <input type="date" name="groupTravelStartTimeStr" id="groupTravelStartTimeStr"
+                               class="border-radius-none" placeholder=""/>
+                        <label>返程日期:</label>
+                        <input type="date" name="groupTravelEndTimeStr" id="groupTravelEndTimeStr" class="border-radius-none"
+                               placeholder=""/>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="service clearfix">
+                        <i class="icon-plane"></i>
+                        <h3>行程规划</h3>
+                        <label style="margin-top: 50px;">出行方式:</label>
+                        <!--<input type="text" class="border-radius-none" placeholder="高铁"/>-->
+                        <select id="goWay" name="goWay">
+                            <option value="1">徒步</option>
+                            <option value="2">火车</option>
+                            <option value="3">汽车</option>
+                            <option value="4">飞机</option>
+                            <option value="5">骑行</option>
+                            <option value="6">动车</option>
+                            <option value="7">自驾</option>
+                            <option value="8">其他</option>
+                        </select>
+                        <label>路线规划:</label>
+                        <input type="text" class="border-radius-none" placeholder="A-B-C-A"/>
+                    </div>
+                </div>
+            </div><!--/row-fluid-->
+            <!-- //End Service Blokcs -->
+
+            <!-- Recent Works -->
+            <div class="headline"><h3>团队旅程明细</h3></div>
+            <ul class="thumbnails" id="scenicSpot">
+                <li id="scenicSpot_minus" onclick="scenicSpot('minus')" class="span2 service clearfix"
+                    style="margin-top: 200px;">
+                    <i class="icon-chevron-left "></i></li>
+                <li class="span4 service clearfix" id="scenicSpot0">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload0">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg0"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID0" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot1">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload1">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg1"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID1" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot2">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload2">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg2"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID2" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot3">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload3">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg3"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID3" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot4">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload4">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg4"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID4" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot5">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload5">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg5"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID5" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot6">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload6">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg6"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID6" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot7">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload7">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg7"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID7" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot8">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload8">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg8"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID8" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot9">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload9">
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg9"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID9" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                            <!--  <a href="javascript:;" class="btn btn-warning fileinput-exists"
+                                 data-dismiss="fileinput">移除</a>-->
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot10">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload10">
+                            <!--<div class="fileinput-new thumbnail"
+                                 style="width: 200px;height: auto;max-height:150px;">
+
+                            </div>-->
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg10"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID10" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+                <li style="display:none" class="span4 service clearfix" id="scenicSpot11">
+                    <h3><a class="hover-effect" href=" javascript:void(0);">up 美图</a></h3>
+                    <div class="page-header">
+                        <div class="fileinput fileinput-new" data-provides="fileinput"
+                             id="exampleInputUpload11">
+
+                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                 style="max-width: 200px; max-height: 150px;">
+                                <img id="picImg11"
+                                     style="width: 100%;height: auto;max-height: 140px;"
+                                     src="/assets/img/123.jpg" alt="">
+                            </div>
+                            <input type="file" name="pic1" id="picID11" style="width: 150px;"
+                                   accept="image/gif,image/jpeg,image/x-png">
+                        </div>
+                    </div>
+                    <h3><a class="hover-effect" href=" javascript:void(0);">简介:
+                        <input style="width: 150px" type="text" value="" placeholder="景点名称"/>
+                    </a></h3>
+                    <textarea rows="4" cols="20" placeholder="你的看法就是最好的简介...">
+                    </textarea>
+                </li>
+
+
+                <li id="scenicSpot_add" onclick="scenicSpot('add')" class="span2 service clearfix"
+                    style="margin-top: 200px;"><i class="icon-chevron-right"></i></li>
+
+            </ul><!--/thumbnails-->
+            <!-- //End Recent Works -->
+
+            <!-- Information Blokcs -->
+            <div class="row-fluid margin-bottom-20">
+                <!-- Who We Are -->
+                <div class="span8">
+                    <div class="headline"><h3>Welcome To UNIFY Template</h3></div>
+                    <p><img class="pull-left lft-img-margin img-width-200" src="/assets/img/carousel/6.jpg" alt=""/>Unify
+                        is an
+                        incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.
+                        It
+                        works on
+                        all major web browsers, tablets and phone.</p>
+                    <ul class="unstyled">
+                        <li><i class="icon-ok color-green"></i> Donec id elit non mi porta gravida</li>
+                        <li><i class="icon-ok color-green"></i> Corporate and Creative</li>
+                        <li><i class="icon-ok color-green"></i> Responsive Bootstrap Template</li>
+                        <li><i class="icon-ok color-green"></i> Corporate and Creative</li>
+                    </ul>
+                    <br/>
+
+                    <blockquote class="hero-unify">
+                        <p>Award winning digital agency. We bring a personal and effective approach to every project
+                            we
+                            work on,
+                            which is why. Unify is an incredibly beautiful responsive Bootstrap Template for
+                            corporate
+                            professionals.</p>
+                        <small>CEO, Jack Bour</small>
+                    </blockquote>
+                </div><!--/span8-->
+
+                <!-- Latest Shots -->
+                <div class="span4">
+                    <div class="headline"><h3>Latest Shots</h3></div>
+                    <div id="myCarousel" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="/assets/img/carousel/5.jpg" alt=""/>
+                                <div class="carousel-caption">
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="/assets/img/carousel/4.jpg" alt=""/>
+                                <div class="carousel-caption">
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="/assets/img/carousel/3.jpg" alt=""/>
+                                <div class="carousel-caption">
+                                    <p>Cras justo odio, dapibus ac facilisis in, egestas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-arrow">
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                                    class="icon-angle-left"></i></a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                                    class="icon-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div><!--/span4-->
+            </div><!--/row-fluid-->
+            <!-- //End Information Blokcs -->
+
+
+        </div><!--/span9-->
+
+
+    </div><!--/row-fluid-->
+    <div class="container controls form-inline flexslider home clients">
+        <button class="container btn-u pull-right" type="submit" style="height: 40px;" id="loginIn">提交本旅行者
+        </button>
+    </div>
+
+    </form>
+    <!-- Our Clients -->
+    <div id="clients-flexslider" class="flexslider home clients">
+        <div class="headline"><h3>Our Clients</h3></div>
+        <ul class="slides">
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/hp_grey.png" alt=""/>
+                    <img src="/assets/img/clients/hp.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/igneus_grey.png" alt=""/>
+                    <img src="/assets/img/clients/igneus.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/vadafone_grey.png" alt=""/>
+                    <img src="/assets/img/clients/vadafone.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/walmart_grey.png" alt=""/>
+                    <img src="/assets/img/clients/walmart.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/shell_grey.png" alt=""/>
+                    <img src="/assets/img/clients/shell.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/natural_grey.png" alt=""/>
+                    <img src="/assets/img/clients/natural.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/aztec_grey.png" alt=""/>
+                    <img src="/assets/img/clients/aztec.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/gamescast_grey.png" alt=""/>
+                    <img src="/assets/img/clients/gamescast.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/cisco_grey.png" alt=""/>
+                    <img src="/assets/img/clients/cisco.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/everyday_grey.png" alt=""/>
+                    <img src="/assets/img/clients/everyday.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/cocacola_grey.png" alt=""/>
+                    <img src="/assets/img/clients/cocacola.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/spinworkx_grey.png" alt=""/>
+                    <img src="/assets/img/clients/spinworkx.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/shell_grey.png" alt=""/>
+                    <img src="/assets/img/clients/shell.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/natural_grey.png" alt=""/>
+                    <img src="/assets/img/clients/natural.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/gamescast_grey.png" alt=""/>
+                    <img src="/assets/img/clients/gamescast.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/everyday_grey.png" alt=""/>
+                    <img src="/assets/img/clients/everyday.png" class="color-img" alt=""/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="/assets/img/clients/spinworkx_grey.png" alt=""/>
+                    <img src="/assets/img/clients/spinworkx.png" class="color-img" alt=""/>
+                </a>
+            </li>
+        </ul>
+    </div><!--/flexslider-->
+    <!-- //End Our Clients -->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+
+<!--footer 引入-->
+<div th:include="footer::footer"></div>
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/upImg/bootstrap-fileinput.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/upImg/upImg.js"></script>
+<script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/js/yxw/goTravel/goTravelScenicSpot.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="/assets/plugins/gmap/gmap.js"></script>
+<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="/assets/js/app.js"></script>
+<script type="text/javascript" src="/assets/js/pages/contact.js"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        App.init();
+        App.initSliders();
+        Contact.initMap();
+    });
+</script>
+<!--[if lt IE 9]>
+<script src="/assets/js/respond.js"></script>
+<![endif]-->
+<div style="display:none">
+    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
+</div>
+</body>
+</html> 

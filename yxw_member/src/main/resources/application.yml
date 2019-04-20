@@ -7,7 +7,7 @@ eureka:
       defaultZone: http://192.168.110.170:8888/eureka/
 spring:
   application:
-    name: yxw_member
+    name: yxw-member
  ##activemq连接信息
   activemq:
     broker-url: tcp://localhost:61616

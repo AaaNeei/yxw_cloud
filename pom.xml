@@ -22,6 +22,7 @@
         <module>yxw_api</module>
         <module>yxw_tool</module>
         <module>yxw_message</module>
+        <module>yxw_web</module>
     </modules>
 
 
@@ -32,7 +33,19 @@
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     </properties>
     <dependencies>
-
+        <!--热部署插件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>2.1.4.RELEASE</version>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -46,6 +59,10 @@
                 <exclusion>
                     <artifactId>servlet-api</artifactId>
                     <groupId>javax.servlet</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -193,7 +210,6 @@
             </snapshots>
         </repository>
     </repositories>
-
 
 
 </project>
