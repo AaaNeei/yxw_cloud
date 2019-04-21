@@ -16,6 +16,8 @@
     <modules>
         <module>yxw_api_member</module>
         <module>yxw_api_pay</module>
+        <module>yxw_api_travel</module>
+        <module>yxw_api_order</module>
     </modules>
 
 

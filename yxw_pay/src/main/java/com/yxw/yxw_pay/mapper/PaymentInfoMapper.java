@@ -19,9 +19,9 @@ public interface PaymentInfoMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id") // 添加该行，product中的id将被自动添加
     public Integer savePaymentType(PaymentInfo paymentInfo);
 
-    @Select("select * from payment_info where  orderId=#{orderId}")
+    @Select("select * from payment_info where  orderid=#{orderId}")
     public PaymentInfo getByOrderIdPayInfo(@Param("orderId") String orderId);
 
     @Update("update payment_info set state =#{state},payMessage=#{payMessage},platformorderId=#{platformorderId},ordername=#{orderName},updated=#{updated} where orderId=#{orderId} ")
-    public void updatePayInfo(PaymentInfo paymentInfo);
+    public Integer updatePayInfo(PaymentInfo paymentInfo);
 }

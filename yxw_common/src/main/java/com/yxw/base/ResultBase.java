@@ -12,6 +12,10 @@ public interface ResultBase {
     String YXW_RESULT_SUCCESS_CODE = "200";
     String YXW_RESULT_ERROR_CODE = "500";
     String YXW_RESULT_ERROR_CODE_OPENID_UNBINDING = "101";
+
+
+    String YXW_RESULT_PAY_FAIL = "fail";
+    String YXW_RESULT_PAY_SUCCESS = "success";
     /**
      * 1为已经是平台用户
      */

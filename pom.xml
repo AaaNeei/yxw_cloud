@@ -24,6 +24,8 @@
         <module>yxw_message</module>
         <module>yxw_web</module>
         <module>yxw_pay</module>
+        <module>yxw_travel</module>
+        <module>yxw_order</module>
     </modules>
 
 
