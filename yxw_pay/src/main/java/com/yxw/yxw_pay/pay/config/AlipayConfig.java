@@ -24,10 +24,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtVDcK/vxvgkH3R+q5SztsDe6trv+TMLq9ePeO4gSMnJjsE/LZxUsG1axmO4pWFaJ+PIiIrAYoGapkSRjMd1G3hOe6ID07q14Y/t+Cii4TV8hrwPU+iQpfQUdNrrmFnu02ZVUoownSJt31Fk75glYZ7VVW4T4sx0Bbj1XOuAXjbKcI2MGuc7yKwYpU4S0J+tJtp+ADX6S26sgv5kwHuR3hKMt42WWq6x4xXJp5XjXEiocMx/dpAf6XTrdbLlvfAoNpT2ypt1n0tUOeuxh1jmK7q+4MANlwiC9L27pxaXAjgAjxKktKIzhgDrCg1XFSlyMNS3LqAtJ9n5bJPo4s8ms6QIDAQAB";
 
     // 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String notify_url = "http://yxw.tunnel.qydev.com/notify_url.jsp";
+    public static String notify_url = "http://yxw.tunnel.qydev.com/pay/asynCallBack";
 
     // 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-    public static String return_url = "http://yxw.tunnel.qydev.com/return_url.jsp";
+    public static String return_url = "http://yxw.tunnel.qydev.com/pay/synCallBack";
 
     // 签名方式
     public static String sign_type = "RSA2";

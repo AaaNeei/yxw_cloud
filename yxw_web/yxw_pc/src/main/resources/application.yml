@@ -26,4 +26,6 @@ spring:
       enabled: false
 
 
-
+yxw:
+  pay:
+    url: http://127.0.0.1
