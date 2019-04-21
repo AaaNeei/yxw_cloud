@@ -18,6 +18,8 @@ public class RedisKeyName {
 
     public final static String YXW_LOGIN_STUDENT = "YXW_LOGIN_STUDENT";
 
+    public final static String YXW_OPENID_KEY = "YXW_OPENID_KEY";
+
 
 }
 

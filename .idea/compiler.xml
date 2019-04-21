@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="yxw_api_member" />
+        <module name="yxw_api_pay" />
         <module name="yxw_common" />
         <module name="yxw_eureka" />
         <module name="yxw_h5" />
         <module name="yxw_member" />
         <module name="yxw_message" />
+        <module name="yxw_pay" />
         <module name="yxw_pc" />
         <module name="yxw_tool" />
         <module name="yxw_wachat" />

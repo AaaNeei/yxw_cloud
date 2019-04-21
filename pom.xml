@@ -23,6 +23,7 @@
         <module>yxw_tool</module>
         <module>yxw_message</module>
         <module>yxw_web</module>
+        <module>yxw_pay</module>
     </modules>
 
 

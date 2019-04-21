@@ -68,10 +68,11 @@ public interface MemberService {
      * QQ登录接口
      *
      * @param student
+     * @param status
      * @return
      */
     @RequestMapping("/qqLogin")
-    ResponseResult qqLogin(@RequestBody Student student);
+    ResponseResult qqLogin(@RequestBody Student student, @RequestParam("status") String status);
 
     /**
      * 登出接口

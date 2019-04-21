@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/yxw_web/yxw_pc/pom.xml" />
         <option value="$PROJECT_DIR$/yxw_web/yxw_h5/pom.xml" />
         <option value="$PROJECT_DIR$/yxw_web/yxw_wachat/pom.xml" />
+        <option value="$PROJECT_DIR$/yxw_pay/pom.xml" />
       </list>
     </option>
   </component>

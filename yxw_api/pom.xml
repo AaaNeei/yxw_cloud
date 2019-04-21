@@ -15,6 +15,7 @@
     <description>游学网api接口工程</description>
     <modules>
         <module>yxw_api_member</module>
+        <module>yxw_api_pay</module>
     </modules>
 
 

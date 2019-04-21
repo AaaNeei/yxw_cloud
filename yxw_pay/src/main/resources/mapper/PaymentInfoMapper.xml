@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yxw.yxw_pay.mapper.PaymentInfoMapper">
+    <resultMap id="StudentResultMap" type="com.yxw.entity.PaymentInfo">
+
+
+    </resultMap>
+    <sql id="Student_Column_List">
+       stu_id, stu_name, stu_sex, stu_age,stu_addr,stu_hobbies,create_time,
+       stu_username,stu_password,comment,school_id,stu_credits,stu_mobile,
+       stu_num,update_time,stu_emil,openid
+    </sql>
+
+
+    <select id="findStudentById" resultMap="StudentResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+        where stu_id = #{stuId} limit 1
+    </select>
+    <select id="findStudentByOpenId" resultMap="StudentResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+        where openid = #{openId} limit 1
+    </select>
+    <select id="ajaxCheckStuUsername" resultMap="StudentResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+        where stu_username = #{stuUsername,jdbcType=VARCHAR} limit 1
+    </select>
+    <select id="selectByStudentLogin" resultMap="StudentResultMap" resultType="com.yxw.entity.Student">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+        where stu_username = #{stuUsername,jdbcType=VARCHAR} and
+        stu_password= #{stuPassword,jdbcType=VARCHAR} limit 1
+    </select>
+    <select id="selectAllStudent" resultMap="StudentResultMap">
+        select
+        <include refid="Student_Column_List"/>
+        from yxw_student
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from yxw_student
+        where stu_id = #{stuId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="stuId" parameterType="com.yxw.entity.Student">
+        insert into yxw_student (
+        <include refid="Student_Column_List"/>
+        )
+        values (null, #{stuName,jdbcType=VARCHAR}, #{stuSex,jdbcType=CHAR},
+        #{stuAge,jdbcType=INTEGER},#{stuAddr,jdbcType=VARCHAR},#{stuHobbies,jdbcType=VARCHAR},
+        #{createTime},#{stuUsername,jdbcType=VARCHAR},#{stuPassword,jdbcType=VARCHAR},
+        #{comment,jdbcType=VARCHAR},#{schoolId,jdbcType=INTEGER},#{stuCredits,jdbcType=INTEGER},
+        #{stuMobile,jdbcType=VARCHAR},#{stuNum,jdbcType=INTEGER},#{updateTime,jdbcType=DATE},
+        #{stuEmil,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.yxw.entity.Student">
+        insert into yxw_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            stu_id,
+            <if test="stuName != null">
+                stu_name,
+            </if>
+            <if test="stuSex != null">
+                stu_sex,
+            </if>
+            <if test="stuAge != null">
+                stu_age,
+            </if>
+            <if test="stuAddr != null">
+                stu_addr,
+            </if>
+            <if test="stuHobbies != null">
+                stu_hobbies,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="stuUsername != null">
+                stu_username,
+            </if>
+            <if test="stuPassword != null">
+                stu_password,
+            </if>
+            <if test="comment != null">
+                comment,
+            </if>
+            <if test="schoolId != null">
+                school_id,
+            </if>
+            <if test="stuCredits != null">
+                stu_credits,
+            </if>
+            <if test="stuMobile != null">
+                stu_mobile,
+            </if>
+            <if test="stuNum != null">
+                stu_num,
+            </if>
+            -- update_time,
+            <if test="stuEmil != null">
+                stu_emil
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            null ,
+            <if test="stuName != null">
+                #{stuName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuSex != null">
+                #{stuSex,jdbcType=CHAR},
+            </if>
+            <if test="stuAge != null">
+                #{stuAge,jdbcType=INTEGER},
+            </if>
+            <if test="stuAddr != null">
+                #{stuAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="stuHobbies != null">
+                #{stuHobbies,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="stuUsername != null">
+                #{stuUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="stuPassword != null">
+                #{stuPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="comment != null">
+                #{comment,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolId != null">
+                #{schoolId,jdbcType=INTEGER},
+            </if>
+            <if test="stuCredits != null">
+                #{stuCredits,jdbcType=INTEGER},
+            </if>
+            <if test="stuMobile != null">
+                #{stuMobile,jdbcType=VARCHAR}
+            </if>
+            <if test="stuNum != null">
+                #{stuNum,jdbcType=INTEGER},
+            </if>
+            -- to_date(#{updateTime,jdbcType=DATE}, 'YYYY/MM/DD HH24:mi:ss' ),
+            <if test="stuEmil != null">
+                #{stuEmil,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </insert>
+    <update id="updateStudentByStuId" parameterType="com.yxw.entity.Student">
+        update yxw_student
+        <set>
+            <if test="stuId != null">
+                stu_id = #{stuId,jdbcType=INTEGER},
+            </if>
+            <if test="stuName != null">
+                stu_name = #{stuName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuSex != null">
+                stu_sex = #{stuSex,jdbcType=CHAR},
+            </if>
+            <if test="stuAge != null">
+                stu_age = #{stuAge,jdbcType=INTEGER},
+            </if>
+            <if test="stuAddr != null">
+                stu_addr = #{stuAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="stuHobbies != null">
+                stu_hobbies = #{stuHobbies,jdbcType=VARCHAR},
+            </if>
+            <if test="stuUsername != null">
+                stu_username = #{stuUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="stuPassword != null">
+                stu_password = #{stuPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="comment != null">
+                comment = #{comment,jdbcType=VARCHAR},
+            </if>
+            <if test="schoolId != null">
+                school_id = #{schoolId,jdbcType=INTEGER},
+            </if>
+            <if test="stuCredits != null">
+                #{stuCredits,jdbcType=INTEGER},
+            </if>
+            <if test="stuMobile != null">
+                stu_mobile = #{stuMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="stuNum != null">
+                stu_num = #{stuNum,jdbcType=INTEGER},
+            </if>
+            <if test="stuEmil != null">
+                stu_emil = #{stuEmil,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null">
+                openid = #{openId,jdbcType=VARCHAR},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where stu_id = #{stuId,jdbcType=INTEGER}
+    </update>
+    <update id="updateStudentBindingOpenId" parameterType="com.yxw.entity.Student">
+        update yxw_student
+        <set>
+            <if test="openId != null">
+                openid = #{openId,jdbcType=VARCHAR},
+            </if>
+            update_time = #{updateTime}
+        </set>
+        where stu_id = #{stuId,jdbcType=INTEGER}
+    </update>
+    <!--<update id="updateByPrimaryKey" parameterType="Student">
+        update yxw_student
+        set user_name = #{userName,jdbcType=VARCHAR},
+          password = #{password,jdbcType=VARCHAR},
+          phone = #{phone,jdbcType=VARCHAR}
+        where user_id = #{userId,jdbcType=INTEGER}
+    </update>-->
+</mapper>
