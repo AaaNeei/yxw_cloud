@@ -8,4 +8,9 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
+# euerka登录安全平台
+spring:
+  security:
+    user:
+      name: AaNeei
+      password: AaNeei
